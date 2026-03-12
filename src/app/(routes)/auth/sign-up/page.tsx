@@ -1,4 +1,4 @@
-import Logo from "@/components/ui/logo";
+import Logo from "@/components/logo";
 import SignUpForm from "../_components/signup-form";
 
 const Page = () => {

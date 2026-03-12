@@ -1,11 +1,12 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import AppSidebar from "@/components/ui/sidebar/index";
+import AppSidebar from "@/components/sidebar/index";
 import { auth } from "@/lib/auth";
 import { RiLoader5Fill } from "@remixicon/react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import React, { Suspense } from "react";
+import MainContent from "./_components/main-content";
 
 export default async function DashboardLayout({
   children,
@@ -32,7 +33,7 @@ export default async function DashboardLayout({
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset className="relative overflow-x-hidden pt-0">
-            {children}
+            <MainContent>{children}</MainContent>
           </SidebarInset>
         </SidebarProvider>
       </NuqsAdapter>
