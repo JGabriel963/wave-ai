@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import React, { Suspense } from "react";
 import MainContent from "./_components/main-content";
+import { NotDialog } from "@/components/note-dialog/note-dialog";
 
 export default async function DashboardLayout({
   children,
@@ -34,6 +35,7 @@ export default async function DashboardLayout({
           <AppSidebar />
           <SidebarInset className="relative overflow-x-hidden pt-0">
             <MainContent>{children}</MainContent>
+            <NotDialog />
           </SidebarInset>
         </SidebarProvider>
       </NuqsAdapter>

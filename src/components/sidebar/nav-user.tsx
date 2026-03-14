@@ -10,12 +10,23 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { RiLoader5Fill, RiLogoutBoxLine } from "@remixicon/react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
-import { ChevronsUpDownIcon } from "lucide-react";
+import {
+  ChevronsUpDownIcon,
+  LaptopIcon,
+  MoonIcon,
+  PaletteIcon,
+  SunIcon,
+} from "lucide-react";
+import { useTheme } from "next-themes";
 
 type Props = {
   isLoading: boolean;
@@ -29,6 +40,7 @@ type Props = {
 
 const NavUser = ({ user, isLoading, isSigningOut, onSignOut }: Props) => {
   const { isMobile } = useSidebar();
+  const { setTheme } = useTheme();
 
   return (
     <SidebarMenu>
@@ -79,6 +91,38 @@ const NavUser = ({ user, isLoading, isSigningOut, onSignOut }: Props) => {
                 </div>
               </div>
             </DropdownMenuLabel>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger className="cursor-pointer">
+                <PaletteIcon />
+                Theme
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => setTheme("light")}
+                  >
+                    <SunIcon />
+                    Claro
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => setTheme("dark")}
+                  >
+                    <MoonIcon />
+                    Escuro
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="cursor-pointer"
+                    onClick={() => setTheme("system")}
+                  >
+                    <LaptopIcon />
+                    Sistema
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="relative"
